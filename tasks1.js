@@ -87,3 +87,25 @@ for (var i = 0; i < 99; i++) {
  }
 
  print(sumOtr); // результат 2450
+
+
+// 7 задание определить простое ли число
+var p4 = 1223;
+    if ((p4 % 2 == 0)&&(p4 != 2)) // любое четное число - составное
+        print("Sostavnoe");
+    else if (p4 == 2)//число 2 простое
+        print("Prostoe");
+    else{ // число нечетное
+         k=Math.round(Math.sqrt(p4));
+         flag = false;                
+         for(i=2; i<k+1; i++)
+            if(p4 % i == 0)
+            {
+                print("Sostavnoe");
+                flag = true;
+              break;
+             }
+                
+         if (flag == false)
+         print("Prostoe");
+    }

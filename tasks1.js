@@ -89,6 +89,7 @@ for (var i = 0; i < 99; i++) {
  print(sumOtr); // результат 2450
 
 
+
 // 7 задание определить простое ли число
 var p4 = 1223;
     if ((p4 % 2 == 0)&&(p4 != 2)) // любое четное число - составное
@@ -109,3 +110,56 @@ var p4 = 1223;
          if (flag == false)
          print("Prostoe");
     }
+
+//8 Факториал числа 
+    var factor = function(number) {
+        var result = 1;
+        var count;
+        for (count = number; count > 1; count--) {
+        result *= count;
+        }
+        return result;
+       };
+       print(factor(6)); //720
+
+// 9 Сумма цифр числа 
+var an = 123456789;
+var bn = 0;
+for(var i = +an; i > 0; i = parseInt(i/10)) {
+        bn += +i%10;
+    }
+print(bn);//Результат 45
+
+// 10 Отразить число
+var str = '12345';
+str = str.split("").reverse().join("");
+print(str); //54321 результат
+
+// 11 Реверс массива
+print(revs = digits.reverse()); // [ 34, 12, -3 ] результат
+
+//12 количество нечетных элементов массива
+var mas1 = [2, 24, 25, 75, 46, 90, 23, 11];
+sum1 = 0;
+for (var i = 0; i < mas1.length; i++) {
+    if (mas1[i] % 2 && mas1[i] !==0) {
+        sum1 += 1;
+    }
+}
+print(sum1); // результат 4
+
+
+
+// 13 Поменять местами первую и вторую половину массива, например, для массива 1 2 3 4, результат 3 4 1 2
+var sum2 = 0;
+for (var i = 0; i < mas1.length; i++) {
+        sum2 += 1;
+}
+var countArr = (sum2 / 2);
+
+arr1 = (mas1.slice(0, countArr)); 
+arr2 = (mas1.slice(countArr, mas1.length)); 
+arr2 = (revs = arr2.reverse());
+var newArray = arr1.concat(arr2);
+
+print(newArray); // результат [2, 24, 25, 75, 11, 23, 90, 46] Отмечу что данный вариант от и до написан мной )))

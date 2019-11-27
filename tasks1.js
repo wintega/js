@@ -131,9 +131,18 @@ for(var i = +an; i > 0; i = parseInt(i/10)) {
 print(bn);//Результат 45
 
 // 10 Отразить число
-var str = '12345';
-str = str.split("").reverse().join("");
-print(str); //54321 результат
+var num = 1234567;
+function reverseNum(num) {
+  let result = 0;
+  while (num) {
+    result = result * 10 + num % 10;
+    num = Math.floor(num / 10);
+  }
+
+  return result;
+}
+
+print(reverseNum(num));//7654321 результат
 
 // 11 Реверс массива
 print(revs = digits.reverse()); // [ 34, 12, -3 ] результат
@@ -162,4 +171,71 @@ arr2 = (mas1.slice(countArr, mas1.length));
 arr2 = (revs = arr2.reverse());
 var newArray = arr1.concat(arr2);
 
-print(newArray); // результат [2, 24, 25, 75, 11, 23, 90, 46] Отмечу что данный вариант от и до написан мной ))) но я чуть ошибся и еще вдобавок сделал реверс второй части, конечно я могу убрать реверс и написать arr2.concat(arr1) но так мне даже больше нравится )
+print(newArray); // результат [2, 24, 25, 75, 11, 23, 90, 46] 
+
+//14 БубльГум
+var arr3 = [23, 45, 12, 32, 56, 92, 1];
+
+function bubbleSort(arr) {
+    for (var i = 0, endI = arr.length - 1; i < endI; i++) {
+        for (var j = 0, endJ = endI - i; j < endJ; j++) {
+            if (arr[j] > arr[j + 1]) {
+                var swap = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = swap;
+            }
+        }
+    }
+    return arr;
+}
+
+print(bubbleSort(arr3));  //[1, 12, 23, 32, 45, 56, 92]
+
+// 15  Сортировка Select / Insert
+const selectionSort = arr => {
+    for (let i = 0, l = arr.length, k = l - 1; i < k; i++) {
+        let indexMin = i;
+        for (let j = i + 1; j < l; j++) {
+            if (arr[indexMin] > arr[j]) {
+                indexMin = j;
+            }
+        }
+        if (indexMin !== i) {
+            [arr[i], arr[indexMin]] = [arr[indexMin], arr[i]];
+        }
+    }
+    return arr;
+};
+print(selectionSort(arr3)); //[1, 12, 23, 32, 45, 56, 92]
+
+
+const insertionSort = arr => {
+    for (let i = 1, l = arr.length; i < l; i++) {
+        const current = arr[i];
+        let j = i;
+        while (j > 0 && arr[j - 1] > current) {
+            arr[j] = arr[j - 1];
+            j--;
+        }
+        arr[j] = current;
+    }
+    return arr;
+};
+
+print(insertionSort(arr3)); //[1, 12, 23, 32, 45, 56, 92]
+
+
+//16 Массив Рандом
+
+function RandomArray(size, type) { 
+    this.size = size || 0;
+    this.type = type === 'int' ? 'int' : 'float';
+  }
+   
+  RandomArray.prototype.generate = function(min, max) {
+    return this.type === 'int' ?
+      [...new Array(this.size)].map(()=>Math.round(Math.random() * (max + 1 - min))) :
+      [...new Array(this.size)].map(()=>parseFloat((Math.random() * (max + 1 - min)).toFixed(3)));
+  }
+   
+  print(new RandomArray(5, 'int').generate(-10, 50)); // массив из пяти случайных
